@@ -3,6 +3,8 @@
 * URL: https://bootstrapmade.com/php-email-form/
 * Author: BootstrapMade.com
 */
+
+
 (function () {
   "use strict";
 
@@ -15,6 +17,15 @@
       let thisForm = this;
 
       let action = thisForm.getAttribute('action');
+
+      /* COPIED AND PASTED */
+      thisForm.querySelector('.loading').classList.add('d-block');
+      thisForm.querySelector('.error-message').classList.remove('d-block');
+      thisForm.querySelector('.sent-message').classList.remove('d-block');
+      let formData = new FormData( thisForm );
+      php_email_form_submit(thisForm, action, formData);
+
+      /*
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       
       if( ! action ) {
@@ -46,6 +57,7 @@
       } else {
         php_email_form_submit(thisForm, action, formData);
       }
+      */
     });
   });
 
@@ -57,6 +69,7 @@
     })
     .then(response => {
       if( response.ok ) {
+        alert("MESSAGE SENT!");
         return response.text();
       } else {
         throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
@@ -70,10 +83,12 @@
       } else {
         throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
       }
+    
     })
+    /*
     .catch((error) => {
       displayError(thisForm, error);
-    });
+    });*/
   }
 
   function displayError(thisForm, error) {

@@ -1231,6 +1231,7 @@ section {
   background: #fff;
   text-align: center;
   padding: 15px;
+  transition-duration: 5s;
 }
 
 .contact .php-email-form .loading:before {
