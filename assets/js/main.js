@@ -252,4 +252,33 @@
    */
   new PureCounter();
 
+  /**
+   * Calculate and update age dynamically
+   */
+  function updateAge() {
+    // Birth date (assuming you were born on March 8, 1995)
+    const birthDate = new Date('1995-03-08');
+    
+    // Get current date
+    const currentDate = new Date();
+    
+    // Calculate initial age
+    let age = currentDate.getFullYear() - birthDate.getFullYear();
+    
+    // Adjust if birthday hasn't occurred this year yet
+    if (currentDate.getMonth() < birthDate.getMonth() || 
+        (currentDate.getMonth() === birthDate.getMonth() && currentDate.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    
+    // Update the display
+    const ageElement = document.getElementById('age-display');
+    if (ageElement) {
+      ageElement.textContent = age;
+    }
+  }
+
+  // Update age on page load
+  updateAge();
+
 })()
