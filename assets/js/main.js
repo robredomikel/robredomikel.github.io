@@ -246,6 +246,17 @@
   /**
    * Render publications from JSON, then initialize the year filter.
    */
+  let publicationDataPromise;
+  const loadPublicationData = () => {
+    if (!publicationDataPromise) {
+      publicationDataPromise = fetch('assets/data/publications.json').then(response => {
+        if (!response.ok) throw new Error(`Publication data returned ${response.status}`);
+        return response.json();
+      });
+    }
+    return publicationDataPromise;
+  };
+
   const normalizeDoi = (doi) => doi.toLowerCase().replace(/^https?:\/\/(dx\.)?doi\.org\//, '');
 
   const createPublicationCard = (publication) => {
@@ -342,16 +353,12 @@
     if (!container || !filters) return;
 
     try {
-      const response = await fetch('assets/data/publications.json');
-      if (!response.ok) throw new Error(`Publication data returned ${response.status}`);
-
-      const data = await response.json();
+      const data = await loadPublicationData();
       const publications = Array.isArray(data.publications) ? data.publications : [];
       if (!publications.length) throw new Error('No publications were found');
 
       const years = [...new Set(publications.map(item => Number(item.year)))].sort((a, b) => b - a);
-      const currentYear = new Date().getFullYear();
-      const defaultYear = years.includes(currentYear) ? currentYear : years[0];
+      const defaultYear = years[0];
 
       filters.replaceChildren(...years.map(year => {
         const filter = document.createElement('li');
@@ -464,23 +471,9 @@
   updateAge();
 
   /**
-   * News pagination and rendering
+   * Publication-only news pagination and rendering
    */
-  const newsItems = [
-    "[15-09-2026] Paper accepted at ACM TOSEM on refactoring motivations in open-source projects.",
-    "[05-09-2026] Invited talk on Time Series Analysis in Empirical Software Engineering at Oulu.",
-    "[20-08-2026] Released a new multi-dimensional dataset for software quality analytics.",
-    "[10-08-2026] Started collaboration on Generative AI agent-based code review frameworks.",
-    "[25-07-2026] Attended and presented research at international software engineering symposium.",
-    "[12-07-2026] Published new pre-print exploring early defect forecasting approaches.",
-    "[30-06-2026] Completed advanced statistical modelling workshop with visiting scholars.",
-    "[15-06-2026] Organized internal reading group on multivariate time series analysis.",
-    "[01-06-2026] Welcomed new research assistants to the Empirical Software Engineering lab.",
-    "[20-05-2026] Submitted registered report on time-sensitive defect prediction to SANER.",
-    "[10-05-2026] Presented findings on architectural smells and static analysis warnings.",
-    "[02-04-2026] Updated research pipeline codebase for automated GitHub data extraction."
-  ];
-
+  let newsItems = [];
   let currentNewsPage = 1;
   const newsPerPage = 10;
 
@@ -496,7 +489,20 @@
     const end = start + newsPerPage;
     const pageItems = newsItems.slice(start, end);
 
-    listEl.innerHTML = pageItems.map(item => `<li style="padding: 8px 0; border-bottom: 1px solid #eee; font-size: 14px; color: #444;"><i class="bi bi-bell-fill" style="color: #ffb727; margin-right: 8px;"></i>${item}</li>`).join('');
+    listEl.replaceChildren(...pageItems.map(item => {
+      const listItem = document.createElement('li');
+      listItem.style.cssText = 'padding: 8px 0; border-bottom: 1px solid #eee; font-size: 14px; color: #444;';
+
+      const icon = document.createElement('i');
+      icon.className = 'bi bi-journal-text';
+      icon.style.cssText = 'color: #ffb727; margin-right: 8px;';
+      icon.setAttribute('aria-hidden', 'true');
+
+      const textNode = document.createTextNode(`[${item.date || item.year}] ${item.title}${item.venue ? ` — ${item.venue}` : ''}`);
+
+      listItem.append(icon, textNode);
+      return listItem;
+    }));
 
     if (totalPages > 1) {
       let paginationHtml = '';
@@ -517,6 +523,39 @@
     }
   }
 
-  renderNews();
+  const initializeNews = async () => {
+    const listEl = document.getElementById('news-list');
+    if (!listEl) return;
+
+    try {
+      // Add any non-publication events (talks, awards, visits, etc.) here in [dd-mm-yyyy] format:
+      const manualEvents = [
+        { date: "18-09-2026", title: "Completed the Summer School on Agentic AI and Software Architecture", venue: "University of Southern Denmark (SDU), Vejle, Denmark", year: 2026 },
+        { date: "18-04-2026", title: "Attended the 48th International Conference on Software Engineering (ICSE) in Rio de Janeiro, Brazil. Presented our accepted dataset paper \"SQuaD: The Software Quality Dataset\".", venue: "Rio de Janeiro, Brazil", year: 2026 },
+        { date: "20-03-2026", title: "Virtually attended the 33rd IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER) and presented our accepted registered report.", venue: "Limassol, Cyprus", year: 2026 },
+        { date: "01-05-2025", title: "Completed my research visit to my co-supervisot Professor Rafael Peñaloza in Italy for a period of 3 months.", venue: "Università degli Studi di Milano - Bicocca, Milano, Italy", year: 2025 },  
+      ];
+
+      const data = await loadPublicationData();
+      const publications = Array.isArray(data.publications) ? data.publications : [];
+      
+      newsItems = [...manualEvents, ...publications]
+        .map((item, index) => ({ ...item, index }))
+        .sort((a, b) => {
+          const dateA = a.date ? a.date.split('-').reverse().join('-') : `${a.year}-01-01`;
+          const dateB = b.date ? b.date.split('-').reverse().join('-') : `${b.year}-01-01`;
+          return dateB.localeCompare(dateA) || b.index - a.index;
+        });
+
+      renderNews();
+    } catch (error) {
+      console.error('Unable to load publication news.', error);
+      const item = document.createElement('li');
+      item.textContent = 'Publication news could not be loaded. Please try again later.';
+      listEl.replaceChildren(item);
+    }
+  };
+
+  initializeNews();
 
 })()

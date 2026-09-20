@@ -3,6 +3,7 @@
   "publications": [
     {
       "year": 2023,
+      "date": "10-11-2023",
       "title": "Ignoring Time Dependence in Software Engineering Data. A Mistake",
       "authors": "M. Robredo, N. Saarimaki, R. Peñaloza, V. Lenarduzzi",
       "venue": "Accepted in WSESE2024 (International Workshop on Methodological Issues with Empirical Studies in Software Engineering)",
@@ -11,6 +12,7 @@
     },
     {
       "year": 2023,
+      "date": "06-06-2023",
       "title": "Does Microservices Adoption Impact the Development Velocity? A Cohort Study. A Registered Report",
       "authors": "N. Saarimaki, M. Robredo, S. Vegas, N. Juristo, D. Taibi, V. Lenarduzzi",
       "venue": "Accepted in International Conference on Mining Software Repositories (MSR 2024)",
@@ -19,13 +21,16 @@
     },
     {
       "year": 2023,
+      "date": "15-05-2023",
       "title": "MEASURING THE IMPACT OF SONARQUBE ON THE DEVELOPMENT VELOCITY USING REGRESSION ANALYSIS",
       "authors": "M. Robredo",
+      "venue": "Master's Thesis",
       "url": "https://trepo.tuni.fi/bitstream/handle/10024/149125/RobredoManeroMikel.pdf?sequence=2",
       "image": "assets/img/portfolio/masters_thesis.JPG"
     },
     {
       "year": 2024,
+      "date": "14-03-2024",
       "title": "Comparing Multivariate Time Series Analysis and Machine Learning Performance for Technical Debt Prediction: The SQALE Index Case",
       "authors": "M. Robredo, N. Saarimäki, R. Peñaloza, D. Taibi, V. Lenarduzzi",
       "venue": "Accepted in the 7th International Conference on Technical Debt (TechDebt 2024)",
@@ -35,6 +40,7 @@
     },
     {
       "year": 2024,
+      "date": "20-04-2024",
       "title": "Cohort studies for mining software repositories",
       "authors": "M. Robredo, N. Saarimaki, V. Lenarduzzi, S. Vegas, D. Taibi",
       "venue": "Accepted in the 21st International Conference on Mining Software Repositories (MSR 2024)",
@@ -44,6 +50,7 @@
     },
     {
       "year": 2024,
+      "date": "28-08-2024",
       "title": "Analyzing the Ripple Effects of Refactoring. A Registered Report",
       "authors": "M. Robredo, M. Esposito, F. Palomba, R. Peñaloza, V. Lenarduzzi",
       "venue": "Accepted in the 40th International Conference on Software Maintenance and Evolution (ICSME 2024)",
@@ -52,6 +59,7 @@
     },
     {
       "year": 2024,
+      "date": "10-09-2024",
       "title": "Dealing with Time Dependence in Empirical Software Engineering",
       "authors": "M. Robredo",
       "venue": "Accepted in the International Doctoral Symposium on Empirical Software Engineering (IDoESE 2024)",
@@ -60,6 +68,7 @@
     },
     {
       "year": 2024,
+      "date": "25-07-2024",
       "title": "In Search of Metrics to Guide Developer-Based Refactoring Recommendations",
       "authors": "M. Robredo, M. Esposito, F. Palomba, R. Peñaloza, V. Lenarduzzi",
       "venue": "Accepted in the 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM 2024)",
@@ -68,6 +77,7 @@
     },
     {
       "year": 2025,
+      "date": "15-02-2025",
       "title": "On the correlation between architectural smells and static analysis warnings",
       "authors": "M. Esposito, M. Robredo, F. Arcelli Fontana, R. Peñaloza, V. Lenarduzzi",
       "venue": "Accepted in Software Quality Journal (SQJ)",
@@ -77,6 +87,7 @@
     },
     {
       "year": 2025,
+      "date": "20-03-2025",
       "title": "SQuaD: The Software Quality Dataset",
       "authors": "M. Robredo, M. Esposito, D. Taibi, R. Peñaloza, V. Lenarduzzi",
       "venue": "Accepted in Proceedings of the 23rd International Conference on Mining Software Repositories (MSR)",
@@ -86,6 +97,7 @@
     },
     {
       "year": 2025,
+      "date": "10-06-2025",
       "title": "Evaluating Time-Dependent Methods and Seasonal Effects in Code Technical Debt Prediction",
       "authors": "M. Robredo, N. Saarimäki, D. Taibi, R. Peñaloza, V. Lenarduzzi",
       "venue": "Accepted in the Journal of Systems and Software (JSS)",
@@ -94,6 +106,7 @@
     },
     {
       "year": 2025,
+      "date": "05-07-2025",
       "title": "Does Microservice Adoption Impact the Velocity? A Cohort Study",
       "authors": "N. Saarimäki, M. Robredo, S. Vegas, N. Juristo, D. Taibi, V. Lenarduzzi",
       "venue": "Accepted in the Empirical Software Engineering Journal (EMSE)",
@@ -103,6 +116,7 @@
     },
     {
       "year": 2025,
+      "date": "30-06-2025",
       "title": "Autonomic Microservice Management via Agentic AI and MAPE-K Integration",
       "authors": "M. Esposito, A. Bakhtin, N. Ahmad, M. Robredo, R. Su, V. Lenarduzzi, D. Taibi",
       "venue": "Accepted in the 19th European Conference on Software Architecture (ECSA 2025)",
@@ -111,6 +125,7 @@
     },
     {
       "year": 2026,
+      "date": "05-01-2026",
       "title": "A Defect is Being Born: How Close Are We? A Time Sensitive Forecasting Approach",
       "authors": "M. Robredo, M. Esposito, F. Palomba, R. Peñaloza, V. Lenarduzzi",
       "venue": "Accepted Registered Report at SANER",
@@ -119,6 +134,7 @@
     },
     {
       "year": 2026,
+      "date": "15-01-2026",
       "title": "A critical reflection on the state of data analysis in empirical software engineering",
       "authors": "M. Esposito, M. Robredo, M. Sridharan, R. Peñaloza, V. Lenarduzzi",
       "venue": "Accepted in ACM Transactions on Software Engineering and Methodology (TOSEM)",
@@ -128,6 +144,7 @@
     },
     {
       "year": 2026,
+      "date": "10-02-2026",
       "title": "Generative AI as an infrastructure copilot: automating Infrastructure-as-Code",
       "authors": "M. Robredo, M. Esposito, V. Lenarduzzi, D. Taibi",
       "venue": "Accepted in Automated Software Engineering (AUSE)",
@@ -137,6 +154,7 @@
     },
     {
       "year": 2026,
+      "date": "28-02-2026",
       "title": "What Were You Thinking? An LLM-Driven Large-Scale Study of Refactoring Motivations in Open-Source Projects",
       "authors": "M. Robredo, M. Esposito, F. Palomba, R. Peñaloza, V. Lenarduzzi",
       "venue": "Accepted in ACM Transactions on Software Engineering and Methodology (TOSEM)",
