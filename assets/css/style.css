@@ -352,7 +352,7 @@ h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/Robredo-Mikel_UniOulu_112025.jpg") 95% center;
+  background: url("../img/Robredo-Mikel_UniOulu_112025.jpg") center center;
   background-size: cover;
   position: relative;
 }
@@ -375,9 +375,10 @@ h6 {
   right: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  padding: 0 15px;
+  padding: 0 80px;
+  text-align: left;
 }
 
 #hero h1 {

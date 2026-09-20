@@ -1,0 +1,148 @@
+{
+  "enrichCitationsFromOpenAlex": true,
+  "publications": [
+    {
+      "year": 2023,
+      "title": "Ignoring Time Dependence in Software Engineering Data. A Mistake",
+      "authors": "M. Robredo, N. Saarimaki, R. Peñaloza, V. Lenarduzzi",
+      "venue": "Accepted in WSESE2024 (International Workshop on Methodological Issues with Empirical Studies in Software Engineering)",
+      "url": "https://arxiv.org/abs/2311.03114",
+      "image": "assets/img/portfolio/ignoring_time_paper.JPG"
+    },
+    {
+      "year": 2023,
+      "title": "Does Microservices Adoption Impact the Development Velocity? A Cohort Study. A Registered Report",
+      "authors": "N. Saarimaki, M. Robredo, S. Vegas, N. Juristo, D. Taibi, V. Lenarduzzi",
+      "venue": "Accepted in International Conference on Mining Software Repositories (MSR 2024)",
+      "url": "https://arxiv.org/abs/2306.02034",
+      "image": "assets/img/portfolio/cohort_paper.JPG"
+    },
+    {
+      "year": 2023,
+      "title": "MEASURING THE IMPACT OF SONARQUBE ON THE DEVELOPMENT VELOCITY USING REGRESSION ANALYSIS",
+      "authors": "M. Robredo",
+      "url": "https://trepo.tuni.fi/bitstream/handle/10024/149125/RobredoManeroMikel.pdf?sequence=2",
+      "image": "assets/img/portfolio/masters_thesis.JPG"
+    },
+    {
+      "year": 2024,
+      "title": "Comparing Multivariate Time Series Analysis and Machine Learning Performance for Technical Debt Prediction: The SQALE Index Case",
+      "authors": "M. Robredo, N. Saarimäki, R. Peñaloza, D. Taibi, V. Lenarduzzi",
+      "venue": "Accepted in the 7th International Conference on Technical Debt (TechDebt 2024)",
+      "url": "https://dl.acm.org/doi/pdf/10.1145/3644384.3644472",
+      "doi": "10.1145/3644384.3644472",
+      "image": "assets/img/portfolio/td_conference.jpg"
+    },
+    {
+      "year": 2024,
+      "title": "Cohort studies for mining software repositories",
+      "authors": "M. Robredo, N. Saarimaki, V. Lenarduzzi, S. Vegas, D. Taibi",
+      "venue": "Accepted in the 21st International Conference on Mining Software Repositories (MSR 2024)",
+      "url": "https://dl.acm.org/doi/pdf/10.1145/3643991.3649103",
+      "doi": "10.1145/3643991.3649103",
+      "image": "assets/img/portfolio/msr_tutorial.jpg"
+    },
+    {
+      "year": 2024,
+      "title": "Analyzing the Ripple Effects of Refactoring. A Registered Report",
+      "authors": "M. Robredo, M. Esposito, F. Palomba, R. Peñaloza, V. Lenarduzzi",
+      "venue": "Accepted in the 40th International Conference on Software Maintenance and Evolution (ICSME 2024)",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4938000",
+      "image": "assets/img/portfolio/ripple-rr.jpg"
+    },
+    {
+      "year": 2024,
+      "title": "Dealing with Time Dependence in Empirical Software Engineering",
+      "authors": "M. Robredo",
+      "venue": "Accepted in the International Doctoral Symposium on Empirical Software Engineering (IDoESE 2024)",
+      "url": "assets/ESEM2024_Mikel_PhD_Symp.pdf",
+      "image": "assets/img/portfolio/phd_symp.jpg"
+    },
+    {
+      "year": 2024,
+      "title": "In Search of Metrics to Guide Developer-Based Refactoring Recommendations",
+      "authors": "M. Robredo, M. Esposito, F. Palomba, R. Peñaloza, V. Lenarduzzi",
+      "venue": "Accepted in the 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM 2024)",
+      "url": "https://arxiv.org/pdf/2407.18169",
+      "image": "assets/img/portfolio/refRecommender-rr.jpg"
+    },
+    {
+      "year": 2025,
+      "title": "On the correlation between architectural smells and static analysis warnings",
+      "authors": "M. Esposito, M. Robredo, F. Arcelli Fontana, R. Peñaloza, V. Lenarduzzi",
+      "venue": "Accepted in Software Quality Journal (SQJ)",
+      "url": "https://link.springer.com/article/10.1007/s11219-025-09730-7",
+      "doi": "10.1007/s11219-025-09730-7",
+      "image": "assets/img/portfolio/correlation_sats.png"
+    },
+    {
+      "year": 2025,
+      "title": "SQuaD: The Software Quality Dataset",
+      "authors": "M. Robredo, M. Esposito, D. Taibi, R. Peñaloza, V. Lenarduzzi",
+      "venue": "Accepted in Proceedings of the 23rd International Conference on Mining Software Repositories (MSR)",
+      "url": "https://dl.acm.org/doi/full/10.1145/3793302.3793312",
+      "doi": "10.1145/3793302.3793312",
+      "image": "assets/img/portfolio/squad_paper.png"
+    },
+    {
+      "year": 2025,
+      "title": "Evaluating Time-Dependent Methods and Seasonal Effects in Code Technical Debt Prediction",
+      "authors": "M. Robredo, N. Saarimäki, D. Taibi, R. Peñaloza, V. Lenarduzzi",
+      "venue": "Accepted in the Journal of Systems and Software (JSS)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0164121225002146",
+      "image": "assets/img/portfolio/jss_TD.jpg"
+    },
+    {
+      "year": 2025,
+      "title": "Does Microservice Adoption Impact the Velocity? A Cohort Study",
+      "authors": "N. Saarimäki, M. Robredo, S. Vegas, N. Juristo, D. Taibi, V. Lenarduzzi",
+      "venue": "Accepted in the Empirical Software Engineering Journal (EMSE)",
+      "url": "https://link.springer.com/article/10.1007/s10664-025-10673-7",
+      "doi": "10.1007/s10664-025-10673-7",
+      "image": "assets/img/portfolio/docker_cohort.jpg"
+    },
+    {
+      "year": 2025,
+      "title": "Autonomic Microservice Management via Agentic AI and MAPE-K Integration",
+      "authors": "M. Esposito, A. Bakhtin, N. Ahmad, M. Robredo, R. Su, V. Lenarduzzi, D. Taibi",
+      "venue": "Accepted in the 19th European Conference on Software Architecture (ECSA 2025)",
+      "url": "https://arxiv.org/pdf/2506.22185",
+      "image": "assets/img/portfolio/mape-k.jpg"
+    },
+    {
+      "year": 2026,
+      "title": "A Defect is Being Born: How Close Are We? A Time Sensitive Forecasting Approach",
+      "authors": "M. Robredo, M. Esposito, F. Palomba, R. Peñaloza, V. Lenarduzzi",
+      "venue": "Accepted Registered Report at SANER",
+      "url": "https://arxiv.org/abs/2601.01921",
+      "image": "assets/img/portfolio/defect_rr.png"
+    },
+    {
+      "year": 2026,
+      "title": "A critical reflection on the state of data analysis in empirical software engineering",
+      "authors": "M. Esposito, M. Robredo, M. Sridharan, R. Peñaloza, V. Lenarduzzi",
+      "venue": "Accepted in ACM Transactions on Software Engineering and Methodology (TOSEM)",
+      "url": "https://dl.acm.org/doi/abs/10.1145/3799715",
+      "doi": "10.1145/3799715",
+      "image": "assets/img/portfolio/critical_reflection_tosem.png"
+    },
+    {
+      "year": 2026,
+      "title": "Generative AI as an infrastructure copilot: automating Infrastructure-as-Code",
+      "authors": "M. Robredo, M. Esposito, V. Lenarduzzi, D. Taibi",
+      "venue": "Accepted in Automated Software Engineering (AUSE)",
+      "url": "https://link.springer.com/article/10.1007/s10515-026-00600-5",
+      "doi": "10.1007/s10515-026-00600-5",
+      "image": "assets/img/portfolio/generativeAI.png"
+    },
+    {
+      "year": 2026,
+      "title": "What Were You Thinking? An LLM-Driven Large-Scale Study of Refactoring Motivations in Open-Source Projects",
+      "authors": "M. Robredo, M. Esposito, F. Palomba, R. Peñaloza, V. Lenarduzzi",
+      "venue": "Accepted in ACM Transactions on Software Engineering and Methodology (TOSEM)",
+      "url": "https://dl.acm.org/doi/abs/10.1145/3799717",
+      "doi": "10.1145/3799717",
+      "image": "assets/img/portfolio/whatWereYouThinking.png"
+    }
+  ]
+}

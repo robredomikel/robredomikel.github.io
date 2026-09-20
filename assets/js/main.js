@@ -244,33 +244,166 @@
   });
 
   /**
-   * Porfolio isotope and filter
+   * Render publications from JSON, then initialize the year filter.
    */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
-        filter: '.filter-web'
-      });
+  const normalizeDoi = (doi) => doi.toLowerCase().replace(/^https?:\/\/(dx\.)?doi\.org\//, '');
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+  const createPublicationCard = (publication) => {
+    const card = document.createElement('div');
+    card.className = `col-lg-4 col-md-6 portfolio-item filter-${publication.year}`;
 
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
+    const imageWrapper = document.createElement('div');
+    imageWrapper.className = 'portfolio-img';
 
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
+    const image = document.createElement('img');
+    image.src = publication.image;
+    image.className = 'img-fluid';
+    image.alt = publication.title;
+    image.loading = 'lazy';
+    imageWrapper.appendChild(image);
 
-      }, true);
+    const imageLink = document.createElement('a');
+    imageLink.href = publication.url;
+    imageLink.target = '_blank';
+    imageLink.rel = 'noopener noreferrer';
+    imageLink.setAttribute('aria-label', `Open ${publication.title}`);
+    imageLink.appendChild(document.createElement('span')).className = 'link';
+    imageWrapper.appendChild(imageLink);
+
+    const info = document.createElement('div');
+    info.className = 'portfolio-info';
+
+    const title = document.createElement('h4');
+    title.textContent = publication.title;
+    info.appendChild(title);
+
+    const authors = document.createElement('p');
+    authors.textContent = publication.authors;
+    info.appendChild(authors);
+
+    if (publication.venue) {
+      const venue = document.createElement('p');
+      venue.textContent = publication.venue;
+      info.appendChild(venue);
     }
 
-  });
+    if (publication.doi) {
+      const citations = document.createElement('p');
+      citations.className = 'publication-citations';
+      citations.dataset.doi = normalizeDoi(publication.doi);
+      citations.hidden = true;
+      info.appendChild(citations);
+    }
+
+    const infoLink = imageLink.cloneNode(true);
+    info.appendChild(infoLink);
+    card.append(imageWrapper, info);
+    return card;
+  };
+
+  const enrichPublicationCitations = async (publications, portfolioIsotope) => {
+    const dois = [...new Set(publications.filter(item => item.doi).map(item => normalizeDoi(item.doi)))];
+    if (!dois.length) return;
+
+    const filter = dois.map(doi => `https://doi.org/${doi}`).join('|');
+    const params = new URLSearchParams({ filter: `doi:${filter}`, per_page: '200', select: 'id,doi,cited_by_count' });
+
+    try {
+      const response = await fetch(`https://api.openalex.org/works?${params}`);
+      if (!response.ok) throw new Error(`OpenAlex returned ${response.status}`);
+
+      const data = await response.json();
+      const worksByDoi = new Map(data.results.map(work => [normalizeDoi(work.doi), work]));
+
+      document.querySelectorAll('.publication-citations[data-doi]').forEach(element => {
+        const work = worksByDoi.get(element.dataset.doi);
+        if (!work) return;
+
+        const link = document.createElement('a');
+        link.href = work.id;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = `${work.cited_by_count.toLocaleString()} OpenAlex citation${work.cited_by_count === 1 ? '' : 's'}`;
+        element.replaceChildren(link);
+        element.hidden = false;
+      });
+
+      portfolioIsotope.layout();
+    } catch (error) {
+      // Citations are an optional enhancement; local publication data remains usable.
+      console.warn('Unable to load OpenAlex citation counts.', error);
+    }
+  };
+
+  const initializePublications = async () => {
+    const container = select('.portfolio-container');
+    const filters = select('#portfolio-flters');
+    const status = select('#publications-status');
+    if (!container || !filters) return;
+
+    try {
+      const response = await fetch('assets/data/publications.json');
+      if (!response.ok) throw new Error(`Publication data returned ${response.status}`);
+
+      const data = await response.json();
+      const publications = Array.isArray(data.publications) ? data.publications : [];
+      if (!publications.length) throw new Error('No publications were found');
+
+      const years = [...new Set(publications.map(item => Number(item.year)))].sort((a, b) => b - a);
+      const currentYear = new Date().getFullYear();
+      const defaultYear = years.includes(currentYear) ? currentYear : years[0];
+
+      filters.replaceChildren(...years.map(year => {
+        const filter = document.createElement('li');
+        filter.dataset.filter = `.filter-${year}`;
+        filter.textContent = year;
+        filter.classList.toggle('filter-active', year === defaultYear);
+        filter.setAttribute('aria-pressed', String(year === defaultYear));
+        filter.tabIndex = 0;
+        return filter;
+      }));
+
+      container.replaceChildren(...publications.map(createPublicationCard));
+      if (status) status.hidden = true;
+
+      const portfolioIsotope = new Isotope(container, {
+        itemSelector: '.portfolio-item',
+        filter: `.filter-${defaultYear}`
+      });
+
+      const chooseYear = (filter) => {
+        filters.querySelectorAll('li').forEach(item => {
+          const isActive = item === filter;
+          item.classList.toggle('filter-active', isActive);
+          item.setAttribute('aria-pressed', String(isActive));
+        });
+        portfolioIsotope.arrange({ filter: filter.dataset.filter });
+      };
+
+      filters.querySelectorAll('li').forEach(filter => {
+        filter.addEventListener('click', () => chooseYear(filter));
+        filter.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            chooseYear(filter);
+          }
+        });
+      });
+
+      container.querySelectorAll('img').forEach(image => {
+        image.addEventListener('load', () => portfolioIsotope.layout(), { once: true });
+      });
+
+      if (data.enrichCitationsFromOpenAlex) {
+        enrichPublicationCitations(publications, portfolioIsotope);
+      }
+    } catch (error) {
+      console.error('Unable to load publications.', error);
+      if (status) status.textContent = 'Publications could not be loaded. Please try again later.';
+    }
+  };
+
+  window.addEventListener('load', initializePublications);
 
   /**
    * Initiate portfolio lightbox 
