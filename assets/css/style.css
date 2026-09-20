@@ -649,6 +649,7 @@ section {
   background: url("../img/nallikaari.jpg") center center no-repeat;
   background-size: cover;
   min-height: 500px;
+  margin-bottom: 40px;
 }
 
 .about .skills-content {

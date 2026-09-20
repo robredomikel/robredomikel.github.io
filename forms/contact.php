@@ -7,7 +7,7 @@
   */
 
   // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'mikel.robredo@oulu.fi';
+  $receiving_email_address = 'robredomikel@gmail.com';
 
   if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $name = $_POST['name'] ?? '';
