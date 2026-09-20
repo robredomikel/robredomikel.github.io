@@ -382,8 +382,11 @@ h6 {
 
 #hero h1 {
   margin: 0 0 10px 0;
-  font-size: 64px;
-  font-family: "Satisfy", serif;
+  font-size: 56px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   color: #fff;
 }
 
