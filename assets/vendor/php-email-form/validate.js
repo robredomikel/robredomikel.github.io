@@ -72,6 +72,7 @@
       if (response.ok) {
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset();
+        return response.json();
       } else {
         return response.json().then(data => {
           if (data && data.errors) {
